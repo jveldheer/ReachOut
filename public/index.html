@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReachOut - Brand Partnership Email Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1>⚡ ReachOut</h1>
+        <p class="subtitle">Brand Partnership Email Generator</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary" onclick="showBrandSettings()">
+          ⚙️ Brand Settings
+        </button>
+        <button class="btn btn-secondary" onclick="showSavedCompanies()">
+          📁 Saved Companies
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Company Form -->
+      <div id="companyForm" class="section">
+        <div class="section-header">
+          <h2>New Pitch</h2>
+          <p>Fill in the company details to generate a personalized pitch email</p>
+        </div>
+
+        <form id="pitchForm" onsubmit="generatePitch(event)">
+          <div class="form-grid">
+            <!-- Recipient Info -->
+            <div class="form-group">
+              <label for="CompanyName">Company Name *</label>
+              <input type="text" id="CompanyName" name="CompanyName" required
+                placeholder="e.g., Lodge Cast Iron">
+            </div>
+
+            <div class="form-group">
+              <label for="RecipientFirst">First Name *</label>
+              <input type="text" id="RecipientFirst" name="RecipientFirst" required
+                placeholder="e.g., Sarah">
+            </div>
+
+            <div class="form-group">
+              <label for="RecipientLast">Last Name *</label>
+              <input type="text" id="RecipientLast" name="RecipientLast" required
+                placeholder="e.g., Johnson">
+            </div>
+
+            <div class="form-group">
+              <label for="Title">Job Title *</label>
+              <input type="text" id="Title" name="Title" required
+                placeholder="e.g., Director of Brand Partnerships">
+            </div>
+
+            <!-- Company Details -->
+            <div class="form-group full-width">
+              <label for="Category">Category *</label>
+              <select id="Category" name="Category" required>
+                <option value="">Select category...</option>
+                <option value="cookware">Cookware/Knives</option>
+                <option value="grocer">Grocer/CPG/Meal Kits</option>
+                <option value="supplements">Supplements/Performance Nutrition</option>
+                <option value="fitness">Fitness Equipment/Recovery</option>
+                <option value="outdoor">Outdoor/Grill/Fire</option>
+                <option value="family">Family/Household Brands</option>
+                <option value="regional">Midwest/Regional Retailers</option>
+                <option value="mission">Mission-Driven/Give-Back Orgs</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="Trigger1">Recent Trigger #1 *</label>
+              <input type="text" id="Trigger1" name="Trigger1" required
+                placeholder="e.g., new spring collection launch">
+              <span class="help-text">Recent news, product launch, campaign, etc.</span>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="Trigger2">Recent Trigger #2</label>
+              <input type="text" id="Trigger2" name="Trigger2"
+                placeholder="Optional second trigger">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="KPI">Their KPIs *</label>
+              <input type="text" id="KPI" name="KPI" required
+                placeholder="e.g., redemptions, CPA, retail sell-through, email capture">
+              <span class="help-text">What metrics do they care about?</span>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="WhyFit">Why This Partnership Fits *</label>
+              <textarea id="WhyFit" name="WhyFit" required rows="3"
+                placeholder="e.g., Lodge's heritage + performance positioning aligns with Jared's authentic, results-driven cooking style and Midwest values"></textarea>
+              <span class="help-text">This is the most important field - be specific!</span>
+            </div>
+
+            <!-- ROI Projections -->
+            <div class="form-group">
+              <label for="AvgOrderValue">Avg Order Value</label>
+              <input type="text" id="AvgOrderValue" name="AvgOrderValue"
+                placeholder="e.g., $75">
+            </div>
+
+            <div class="form-group">
+              <label for="ProjectedRedemptions">Projected Redemptions</label>
+              <input type="text" id="ProjectedRedemptions" name="ProjectedRedemptions"
+                placeholder="e.g., 500-800">
+            </div>
+
+            <div class="form-group">
+              <label for="ProjectedRevenue">Projected Revenue</label>
+              <input type="text" id="ProjectedRevenue" name="ProjectedRevenue"
+                placeholder="e.g., $37,500-$60,000">
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              🚀 Generate Pitch
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="saveCompany(event)">
+              💾 Save Company
+            </button>
+            <button type="button" class="btn btn-ghost" onclick="resetForm()">
+              Clear Form
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div id="resultsSection" class="section" style="display: none;">
+        <div class="section-header">
+          <h2>Generated Content</h2>
+          <button class="btn btn-secondary" onclick="backToForm()">← Back to Form</button>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active" onclick="showTab('prompt')">Prompt</button>
+          <button class="tab" onclick="showTab('email')">Generated Email</button>
+        </div>
+
+        <div id="promptTab" class="tab-content active">
+          <div class="result-box">
+            <div class="result-header">
+              <h3>Copy & Paste to Claude</h3>
+              <button class="btn btn-small" onclick="copyPrompt()">📋 Copy</button>
+            </div>
+            <pre id="promptOutput"></pre>
+          </div>
+
+          <div class="generate-with-api">
+            <h4>Or Generate Directly with Claude API</h4>
+            <div class="api-form">
+              <input type="password" id="apiKey" placeholder="Anthropic API Key (optional - uses env var if not provided)">
+              <button class="btn btn-primary" onclick="generateWithAPI()">
+                ✨ Generate with API
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="emailTab" class="tab-content">
+          <div id="emailLoading" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Generating your email package with Claude...</p>
+          </div>
+          <div id="emailContent" class="result-box">
+            <div class="result-header">
+              <h3>Generated Email Package</h3>
+              <button class="btn btn-small" onclick="copyEmail()">📋 Copy All</button>
+            </div>
+            <div id="emailOutput" class="email-output"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Brand Settings Modal -->
+  <div id="brandModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Brand Settings</h2>
+        <button class="close-btn" onclick="closeBrandSettings()">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="info-text">Update your brand information (audience, links, social proof). This is loaded for all pitches.</p>
+        <textarea id="brandDataEditor" rows="20"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeBrandSettings()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveBrandData()">💾 Save Brand Data</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saved Companies Modal -->
+  <div id="companiesModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Saved Companies</h2>
+        <button class="close-btn" onclick="closeSavedCompanies()">×</button>
+      </div>
+      <div class="modal-body">
+        <div id="companiesList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

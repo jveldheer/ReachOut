@@ -2,7 +2,37 @@
 
 A conversion-optimized email generation system for pitching brand partnerships to companies, leveraging Jared Velveire's upcoming appearance on The Next Level Chef (Season 5, premiering January 29).
 
-## Quick Start
+## 🆕 Now Available: Web App!
+
+**No command line needed!** We now have a beautiful web interface:
+
+```bash
+npm install
+npm start
+# Open http://localhost:3000
+```
+
+**See [WEB-APP-README.md](WEB-APP-README.md) for the full web app guide.**
+
+---
+
+## Two Ways to Use ReachOut
+
+### Option 1: Web App (Recommended) 🚀
+- Beautiful, easy-to-use interface
+- Save and manage companies
+- Generate prompts or use Claude API directly
+- No command line needed
+- **[See WEB-APP-README.md →](WEB-APP-README.md)**
+
+### Option 2: Command Line
+- Script-based generation
+- Good for automation and batch processing
+- Instructions below
+
+---
+
+## Quick Start (Command Line)
 
 ### 1. Fill in Your Brand Data (ONE TIME)
 
