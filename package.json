@@ -1,0 +1,21 @@
+{
+  "name": "reachout",
+  "version": "1.0.0",
+  "description": "Brand partnership email generator for Jared Velveire",
+  "main": "scripts/generate-pitch.js",
+  "scripts": {
+    "generate": "node scripts/generate-pitch.js",
+    "test": "node scripts/generate-pitch.js examples/company-template.json"
+  },
+  "keywords": [
+    "email",
+    "generator",
+    "brand-partnerships",
+    "outreach"
+  ],
+  "author": "Jared Velveire",
+  "license": "PRIVATE",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

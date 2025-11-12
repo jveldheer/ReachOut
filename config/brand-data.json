@@ -1,0 +1,78 @@
+{
+  "talent": {
+    "name": "Jared Velveire",
+    "location": "Grand Rapids, MI",
+    "description": "Creator, coach, and chef-competitor appearing on The Next Level Chef (Season 5 premiere: January 29). Family-friendly, community-minded."
+  },
+  "flagships": [
+    {
+      "name": "Velveire Lineman Vault",
+      "description": "Training/content platform for offensive/defensive line performance (youth HS/college coaches & athletes)"
+    },
+    {
+      "name": "Cooking Content",
+      "description": "Approachable, performance-minded recipes; grills, cast-iron, meal prep; short-form + long-form"
+    }
+  ],
+  "premiere": {
+    "show": "The Next Level Chef",
+    "season": "Season 5",
+    "date": "January 29",
+    "momentumWindow": "Now through 6 weeks after January 29 (peak discovery + press)"
+  },
+  "audience": {
+    "instagram": "{{AudienceSizeIG}}",
+    "tiktok": "{{AudienceSizeTikTok}}",
+    "youtube": "{{AudienceSizeYT}}",
+    "emailList": "{{EmailSubs}}",
+    "emailOpenRate": "{{EmailOpenRate}}",
+    "demographics": {
+      "topGeos": "{{TopGeos}}",
+      "ageSkew": "{{AgeSkew}}",
+      "genderSplit": "{{GenderSplit}}",
+      "interests": "{{Interests}}"
+    }
+  },
+  "socialProof": {
+    "tvAppearance": "The Next Level Chef Season 5",
+    "press": "{{PressHighlights}}",
+    "communityImpact": "{{GiveBack}}",
+    "caseStudy": "{{MiniCaseStudy}}"
+  },
+  "channels": [
+    "Instagram Reels/Stories",
+    "TikTok",
+    "YouTube Shorts/long-form",
+    "Email",
+    "On-site blog",
+    "In-person clinics/pop-ups"
+  ],
+  "partnershipMenu": [
+    "Product integration & recipe builds",
+    "Gear/kit placement",
+    "Co-branded challenges",
+    "Discount code + affiliate",
+    "Email features",
+    "In-person event takeovers",
+    "Whitelisting/paid amplification",
+    "Co-developed SKUs"
+  ],
+  "deliverables": {
+    "baseline": "2-6 short-form videos, 3-8 stories, 1-2 long-form features, 1 email drop, 1-2 stills",
+    "usage": "6-12 months, organic + paid whitelisting"
+  },
+  "pricing": {
+    "tierA": "{{TierA}}",
+    "tierB": "{{TierB}}",
+    "tierC": "{{TierC}}",
+    "note": "Let's scope to KPIs"
+  },
+  "links": {
+    "mediaKit": "{{MediaKitURL}}",
+    "oneSheet": "{{OneSheetURL}}",
+    "caseStudy": "{{CaseStudyURL}}",
+    "calendar": "{{CalendlyURL}}",
+    "vault": "{{VaultURL}}",
+    "cookingHub": "{{CookingHubURL}}"
+  }
+}
