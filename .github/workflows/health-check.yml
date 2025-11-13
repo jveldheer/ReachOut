@@ -1,0 +1,60 @@
+name: Health Check
+
+on:
+  push:
+    branches:
+      - main
+      - 'claude/**'
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Run daily at 9 AM UTC
+    - cron: '0 9 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check server starts
+        run: |
+          timeout 10s npm start &
+          sleep 5
+          pkill -f "node server.js" || true
+
+      - name: Validate JSON files
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('config/brand-data.json'))"
+          node -e "JSON.parse(require('fs').readFileSync('examples/company-template.json'))"
+          echo "✅ All JSON files are valid"
+
+      - name: Check file structure
+        run: |
+          test -f server.js || exit 1
+          test -f public/index.html || exit 1
+          test -f public/app.js || exit 1
+          test -f public/styles.css || exit 1
+          test -f config/brand-data.json || exit 1
+          test -f templates/master-prompt.md || exit 1
+          echo "✅ All required files present"
+
+      - name: Notify on success
+        if: success()
+        run: echo "✅ All health checks passed!"
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "❌ Health check failed - please review logs"

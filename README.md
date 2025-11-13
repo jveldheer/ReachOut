@@ -6,11 +6,19 @@ A conversion-optimized email generation system for pitching brand partnerships t
 
 **No command line needed!** We now have a beautiful web interface:
 
+### Run Locally
 ```bash
 npm install
 npm start
 # Open http://localhost:3000
 ```
+
+### Deploy to Production (1-Click)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jveldheer/ReachOut&env=ANTHROPIC_API_KEY)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/jveldheer/ReachOut)
+
+**[See DEPLOYMENT.md for full deployment guide →](DEPLOYMENT.md)**
 
 **See [WEB-APP-README.md](WEB-APP-README.md) for the full web app guide.**
 
